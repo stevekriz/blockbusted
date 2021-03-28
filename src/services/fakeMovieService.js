@@ -42,6 +42,7 @@ const movies = [
     genre: { _id: "5b21ca3eeb7f6fbccd471820", name: "Drama" },
     numberInStock: 7,
     dailyRentalRate: 3.5,
+    liked: true,
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181e",
