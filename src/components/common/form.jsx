@@ -4,7 +4,10 @@ import Input from "./input";
 import Select from "./select";
 
 class Form extends Component {
-  state = { data: {}, errors: {} };
+  state = {
+    data: {},
+    errors: {},
+  };
 
   validate = () => {
     const options = { abortEarly: false };
@@ -41,6 +44,7 @@ class Form extends Component {
 
     const data = { ...this.state.data };
     data[input.name] = input.value;
+
     this.setState({ data, errors });
   };
 

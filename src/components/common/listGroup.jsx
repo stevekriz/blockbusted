@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const ListGroup = ({
   items,
@@ -14,9 +15,7 @@ const ListGroup = ({
           onClick={() => onItemSelect(item)}
           key={item[valueProperty]}
           className={
-            item === selectedItem
-              ? "list-group-item active"
-              : "list-group-item clickable"
+            item === selectedItem ? "list-group-item active" : "list-group-item"
           }
         >
           {item[textProperty]}
@@ -24,6 +23,12 @@ const ListGroup = ({
       ))}
     </ul>
   );
+};
+
+ListGroup.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+  selectedItem: PropTypes.objectOf(PropTypes.string),
+  onItemSelect: PropTypes.func.isRequired,
 };
 
 ListGroup.defaultProps = {

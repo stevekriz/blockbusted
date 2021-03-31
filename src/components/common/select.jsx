@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Select = ({ name, label, options, error, ...rest }) => {
   return (
@@ -15,6 +16,13 @@ const Select = ({ name, label, options, error, ...rest }) => {
       {error && <div className="alert alert-danger">{error}</div>}
     </div>
   );
+};
+
+Select.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+  error: PropTypes.string,
 };
 
 export default Select;
