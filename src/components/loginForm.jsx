@@ -1,5 +1,5 @@
 import React from "react";
-import Joi from "joi-browser";
+import Joi, { errors } from "joi-browser";
 import Form from "./common/form";
 import { login } from "../services/authService";
 
@@ -15,7 +15,15 @@ class LoginForm extends Form {
   };
 
   doSubmit = async () => {
-    await login(this.state.data);
+    try {
+      await login(this.state.data);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const errors = { ...this.state.errors };
+        errors.email = ex.response.data;
+        this.setState({ errors });
+      }
+    }
   };
 
   render() {
