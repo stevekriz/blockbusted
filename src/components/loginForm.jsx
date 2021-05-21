@@ -1,24 +1,24 @@
-import React from "react";
-import Joi, { errors } from "joi-browser";
-import Form from "./common/form";
-import { login } from "../services/authService";
+import React from 'react';
+import Joi, { errors } from 'joi-browser';
+import Form from './common/form';
+import { login } from '../services/authService';
 
 class LoginForm extends Form {
   state = {
-    data: { email: "", password: "" },
+    data: { email: '', password: '' },
     errors: {},
   };
 
   schema = {
-    email: Joi.string().required().label("Email"),
-    password: Joi.string().required().label("Password"),
+    email: Joi.string().required().label('Email'),
+    password: Joi.string().required().label('Password'),
   };
 
   doSubmit = async () => {
     try {
       const { data: jwt } = await login(this.state.data);
-      localStorage.setItem("token", jwt);
-      this.props.history.push("/");
+      localStorage.setItem('token', jwt);
+      this.props.history.push('/');
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
@@ -33,9 +33,9 @@ class LoginForm extends Form {
       <div>
         <h1>Login</h1>
         <form onSubmit={this.handleSubmit}>
-          {this.renderInput("email", "Email")}
-          {this.renderInput("password", "Password", "password")}
-          {this.renderButton("Login")}
+          {this.renderInput('email', 'Email')}
+          {this.renderInput('password', 'Password', 'password')}
+          {this.renderButton('Login')}
         </form>
       </div>
     );

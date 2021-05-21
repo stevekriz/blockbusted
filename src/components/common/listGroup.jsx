@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const ListGroup = ({
   items,
@@ -9,13 +9,13 @@ const ListGroup = ({
   onItemSelect,
 }) => {
   return (
-    <ul className="list-group">
+    <ul className='list-group'>
       {items.map(item => (
         <li
           onClick={() => onItemSelect(item)}
           key={item[valueProperty]}
           className={
-            item === selectedItem ? "list-group-item active" : "list-group-item"
+            item === selectedItem ? 'list-group-item active' : 'list-group-item'
           }
         >
           {item[textProperty]}
@@ -32,8 +32,8 @@ ListGroup.propTypes = {
 };
 
 ListGroup.defaultProps = {
-  textProperty: "name",
-  valueProperty: "_id",
+  textProperty: 'name',
+  valueProperty: '_id',
 };
 
 export default ListGroup;
